@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="hero">
+        <p class="eyebrow">오늘 할 일</p>
+        <h1>Todo</h1>
+        <p class="lede">적고, 체크하고, 지워 보세요.</p>
+      </header>
+
+      <section class="panel">
+        <form id="todo-form" class="composer" autocomplete="off">
+          <label class="sr-only" for="todo-input">할 일 추가</label>
+          <input
+            id="todo-input"
+            type="text"
+            maxlength="200"
+            placeholder="무엇을 해야 하나요?"
+            required
+          />
+          <button type="submit">추가</button>
+        </form>
+
+        <div class="toolbar">
+          <p id="count" class="count">0개의 할 일</p>
+          <div class="filters" role="tablist" aria-label="필터">
+            <button type="button" class="filter is-active" data-filter="all">전체</button>
+            <button type="button" class="filter" data-filter="active">진행중</button>
+            <button type="button" class="filter" data-filter="completed">완료</button>
+          </div>
+        </div>
+
+        <p id="status" class="status" hidden></p>
+        <ul id="todo-list" class="todo-list"></ul>
+        <p id="empty" class="empty" hidden>아직 할 일이 없습니다.</p>
+      </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  </body>
+</html>
